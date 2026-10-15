@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07162e">
+  <meta name="description" content="A sample GENQUANTAA Academy website for hands-on learning and n8n chatbot integration.">
+  <title>GENQUANTAA Academy | Learn by Building</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#07162e;--navy2:#102b4c;--cyan:#20dbeb;--ink:#142741;--muted:#65758b;--pale:#f3f7fb;--line:#dce7ef;--white:#fff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"DM Sans",Arial,sans-serif;color:var(--ink);background:#fff}a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}.container{width:min(1160px,calc(100% - 44px));margin:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .announcement{background:#0a2941;color:#b8dfed;text-align:center;font-size:12px;letter-spacing:.07em;padding:10px}.announcement strong{color:#fff}
+    .hero-wrap{background:radial-gradient(circle at 83% 33%,#115177a6 0%,transparent 33%),radial-gradient(circle at 20% 98%,#10436799 0%,transparent 36%),var(--navy);color:#fff;position:relative;overflow:hidden}
+    .hero-wrap:after{content:"";position:absolute;inset:0;opacity:.10;pointer-events:none;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:65px 65px;mask-image:linear-gradient(to bottom,transparent,#000)}
+    .nav,.hero{position:relative;z-index:2}.nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0}.brand{display:flex;gap:12px;align-items:center;font-family:Manrope,sans-serif}.brand-mark{height:37px;width:37px;border-radius:11px;background:linear-gradient(145deg,#20edeb,#067ba9);color:#06253c;display:grid;place-items:center;font-weight:900;font-size:24px}.brand strong{font-size:16px;letter-spacing:.08em}.brand small{display:block;font-size:9px;color:#a1ccdb;letter-spacing:.28em;margin-top:3px}.nav-links{display:flex;align-items:center;gap:32px;font-size:13px;color:#c4d7e5}.nav-links a:hover{color:var(--cyan)}
+    .btn{border:0;border-radius:12px;font-weight:700;padding:15px 21px;display:inline-flex;gap:12px;align-items:center;justify-content:center;transition:transform .15s}.btn:hover{transform:translateY(-2px)}.btn-cyan{background:var(--cyan);color:#052639;box-shadow:0 12px 30px #11dbe525}.btn-outline{background:transparent;color:#fff;border:1px solid #64809a}.nav-cta{padding:12px 18px}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;padding:91px 0 111px}.eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid #376b83;background:#17425b6b;color:#88eeef;padding:8px 12px;border-radius:30px;font-size:11px;font-weight:700;letter-spacing:.1em}.eyebrow:before{content:"";height:6px;width:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px #20dbeb30}
+    h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif}h1{font-size:clamp(40px,5vw,67px);line-height:1.12;letter-spacing:-.06em;margin:23px 0}.gradient{background:linear-gradient(90deg,#39e2ed,#a4f3fa);background-clip:text;color:transparent}.hero p{color:#b7cadc;font-size:17px;line-height:1.82;max-width:510px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:34px 0}.mini-note{color:#aac4d6;font-size:12px;margin-top:34px}.mini-note strong{color:#e6fbff}
+    .visual{background:#132c48;border:1px solid #3c6980;border-radius:22px;box-shadow:0 35px 90px #0006;overflow:hidden;transform:rotate(1deg)}.window-bar{display:flex;align-items:center;justify-content:space-between;padding:17px 20px;border-bottom:1px solid #35546c;color:#9ab5ca;font-size:12px}.dots{display:flex;gap:5px}.dots i{height:8px;width:8px;border-radius:50%;background:#6c8799}.dots i:first-child{background:#fb8884}.dots i:nth-child(2){background:#fac76e}.dots i:nth-child(3){background:#7cd8b2}.window-body{padding:25px 26px 29px}.workflow-label{font-size:11px;letter-spacing:.15em;color:#9acedc;font-weight:700;margin-bottom:24px}.node{display:flex;align-items:center;gap:14px;background:#1d3c59;border:1px solid #52758d;border-radius:13px;padding:14px 15px}.node.active{border-color:var(--cyan);background:#1b465c}.node-icon{flex:0 0 37px;height:37px;border-radius:11px;display:grid;place-items:center;background:#2d5874;color:#c6fcff;font-size:19px}.node strong{font-size:13px;display:block}.node small{color:#afc4d2;font-size:11px;display:block;margin-top:4px}.node .tag{font-size:9px;margin-left:auto;color:#9cc8d4;text-transform:uppercase;letter-spacing:.06em}.connect{height:28px;border-left:2px dashed #56c6d6;margin-left:34px}
+    .stats{background:#edf5f9;padding:22px 0;border-bottom:1px solid var(--line)}.stats-inner{display:flex;align-items:center;justify-content:center;gap:68px;flex-wrap:wrap;color:#385b71;font-weight:700;font-size:13px}.stats b{color:#0c96a7;font-size:22px;margin-right:9px}
+    section.light{padding:90px 0}.section-head{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:29px}.kicker{color:#03889f;font-size:11px;font-weight:800;letter-spacing:.15em;margin-bottom:15px}h2{font-size:clamp(28px,3.7vw,44px);letter-spacing:-.05em;margin:0;line-height:1.17}.section-head p{max-width:355px;color:var(--muted);line-height:1.7;margin:0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid var(--line);border-radius:18px;padding:28px;background:white;box-shadow:0 12px 35px #0d315308;display:flex;flex-direction:column;min-height:316px}.iconbox{height:49px;width:49px;border-radius:14px;display:grid;place-items:center;background:#def9fc;color:#077e96;font-size:24px;margin-bottom:25px}.card:nth-child(2) .iconbox{background:#e4ebff;color:#3757ba}.card:nth-child(3) .iconbox{background:#f0eaff;color:#8b54b2}.card h3{font-size:20px;letter-spacing:-.03em;margin-bottom:13px}.card p{color:var(--muted);font-size:14px;line-height:1.7;flex:1}.tags{display:flex;gap:7px;flex-wrap:wrap}.tags span{font-size:11px;color:#43667a;background:#eef4f7;padding:7px 9px;border-radius:7px}.card .card-link{display:inline-flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:18px;margin-top:23px;color:#057d97;font-size:13px;font-weight:800;background:none;border-left:0;border-right:0;border-bottom:0;text-align:left}
+    .how{background:var(--pale);padding:90px 0}.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px}.step{background:#fff;padding:28px;border-radius:16px;border:1px solid var(--line)}.step-num{font-family:Manrope,sans-serif;color:#15a4b7;font-size:26px;font-weight:800}.step h3{font-size:17px;margin:16px 0 8px}.step p{font-size:14px;line-height:1.7;color:var(--muted);margin:0}
+    .banner{margin:85px auto;background:linear-gradient(110deg,#102a48,#075470);border-radius:26px;padding:55px;display:flex;justify-content:space-between;align-items:center;gap:35px;color:white;box-shadow:0 22px 50px #112f5128}.banner h2{margin-bottom:14px}.banner p{color:#c7dfe9;margin:0;line-height:1.7;max-width:570px}.banner .small{display:block;font-size:12px;margin-top:16px;color:#abdae8}
+    .faq{padding:10px 0 85px}.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px}.faq p{color:var(--muted);line-height:1.7}.faq details{border-bottom:1px solid var(--line);padding:19px 0}.faq summary{cursor:pointer;font-weight:700;line-height:1.5}.faq details p{margin:14px 0 0;font-size:14px}.footer{background:var(--navy);color:#a9bfd1;padding:35px 0}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer strong{color:#fff;font-family:Manrope,sans-serif}
+    .chat-fab{position:fixed;z-index:50;bottom:23px;right:24px;display:flex;align-items:center;gap:9px;padding:14px 20px;border-radius:999px;background:#12c8d8;color:#072a3b;border:1px solid #70f4f4;box-shadow:0 8px 33px #07345055;font-weight:800}.chat-fab span{font-size:20px}.chat-panel{position:fixed;z-index:51;bottom:84px;right:23px;width:min(380px,calc(100vw - 28px));height:min(570px,calc(100vh - 112px));border-radius:20px;background:white;box-shadow:0 20px 80px #071d3755;display:flex;flex-direction:column;overflow:hidden;border:1px solid #cbdce8}.chat-panel[hidden]{display:none}.chat-top{background:#082e49;color:white;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}.chat-top strong{display:block}.chat-top small{font-size:11px;color:#a7daeb}.chat-close{background:none;border:0;color:white;font-size:23px}.chat-msgs{padding:17px;background:#f6f9fb;flex:1;overflow:auto;display:flex;flex-direction:column;gap:10px}.bubble{font-size:13px;padding:12px 14px;border-radius:13px;max-width:89%;line-height:1.55;white-space:pre-wrap}.bubble.bot{background:white;border:1px solid var(--line);align-self:flex-start}.bubble.user{background:#0b6d88;color:white;align-self:flex-end}.suggestions{padding:11px 13px;display:flex;gap:6px;overflow:auto}.suggestions button{white-space:nowrap;border-radius:25px;background:#e8f5fa;border:1px solid #d1e7ed;font-size:11px;padding:8px;color:#27516a}.chat-form{display:flex;gap:8px;padding:9px 12px}.chat-form input{min-width:0;flex:1;border:1px solid #d9e4ed;border-radius:10px;padding:12px;font-size:13px}.chat-form button{background:#0b839d;color:white;border:0;border-radius:10px;padding:0 14px}.disclaimer{padding:0 13px 12px;text-align:center;color:#8595a5;font-size:10px}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;gap:35px;padding:55px 0 70px}.hero p{max-width:650px}.visual{max-width:590px}.nav-links{gap:15px}.cards{grid-template-columns:1fr 1fr}.faq-grid{grid-template-columns:1fr;gap:15px}.stats-inner{gap:22px}.banner{padding:35px}}@media(max-width:620px){.container{width:min(100% - 30px,1160px)}.nav{padding:17px 0}.nav-links{display:none}.nav-cta{font-size:12px;padding:11px 12px}.brand strong{font-size:12px}.hero{padding:50px 0 70px}h1{font-size:43px}.section-head{display:block}.section-head p{margin-top:16px}.cards,.step-grid{grid-template-columns:1fr}.banner{flex-direction:column;align-items:flex-start;margin:40px auto}.faq{padding-bottom:55px}section.light,.how{padding:60px 0}.chat-fab{right:13px;bottom:13px}.chat-panel{right:13px;bottom:72px}.stats-inner{justify-content:space-between;gap:14px}}
+  </style>
+</head>
+<body>
+  <div class="announcement">GENQUANTAA ACADEMY <strong>• SAMPLE WEBSITE FOR CHATBOT WORKSHOP</strong></div>
+  <div class="hero-wrap">
+    <div class="container">
+      <header class="nav">
+        <a class="brand" href="#" aria-label="GENQUANTAA Academy home"><span class="brand-mark">✦</span><span><strong>GENQUANTAA</strong><small>ACADEMY</small></span></a>
+        <nav class="nav-links" aria-label="Main navigation"><a href="#programs">Programs</a><a href="#approach">How we learn</a><a href="#faq">FAQs</a></nav>
+        <button class="btn btn-outline nav-cta js-chat">Try the chatbot ↗</button>
+      </header>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">LEARN • BUILD • EXPLORE</div>
+          <h1>Learn the skills.<br><span class="gradient">Build the future.</span></h1>
+          <p>A hands-on space to explore AI, data engineering, and no-code automation. Practice with real-world examples, experiment with visual workflows, and learn by creating.</p>
+          <div class="hero-actions"><a href="#programs" class="btn btn-cyan">Explore learning tracks ↗</a><button class="btn btn-outline js-chat">Launch AI demo ↗</button></div>
+          <div class="mini-note"><strong>Practice-first approach</strong> • No real enrolment data is collected on this demo.</div>
+        </div>
+        <div class="visual" aria-label="Illustration of an AI chatbot workflow">
+          <div class="window-bar"><span class="dots"><i></i><i></i><i></i></span>academy / assistant-workflow <span>● Demo</span></div>
+          <div class="window-body">
+            <div class="workflow-label">YOUR FIRST AI ASSISTANT</div>
+            <div class="node"><span class="node-icon">💬</span><span><strong>Student enquiry</strong><small>“I want to learn Agentic AI”</small></span><span class="tag">Input</span></div>
+            <div class="connect"></div>
+            <div class="node active"><span class="node-icon">✦</span><span><strong>n8n AI Agent</strong><small>Understand the question</small></span><span class="tag">Process</span></div>
+            <div class="connect"></div>
+            <div class="node"><span class="node-icon">✓</span><span><strong>Website chat reply</strong><small>Ask the next useful question</small></span><span class="tag">Output</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="stats"><div class="container stats-inner"><span><b>01</b> Pick a use case</span><span><b>02</b> Build visually</span><span><b>03</b> Test & improve</span></div></div>
+  <section id="programs" class="light">
+    <div class="container">
+      <div class="section-head"><div><div class="kicker">EXPLORE THE POSSIBILITIES</div><h2>Learning paths built<br>around doing.</h2></div><p>Illustrative Academy learning tracks for our demo website. Confirm current programs and schedules with GENQUANTAA Academy.</p></div>
+      <div class="cards">
+        <article class="card"><div class="iconbox">✧</div><h3>Agentic AI & No-Code Automation</h3><p>Explore prompt engineering, AI assistants, n8n workflows, and source-grounded question answering.</p><div class="tags"><span>n8n</span><span>AI assistants</span><span>RAG</span></div><button class="card-link js-chat">Ask about this track <span>↗</span></button></article>
+        <article class="card"><div class="iconbox">◈</div><h3>Azure Data Engineering</h3><p>Learn about pipelines, data lakes, SQL, and transformations through practical Azure examples.</p><div class="tags"><span>Azure</span><span>SQL</span><span>Databricks</span></div><button class="card-link js-chat">Ask about this track <span>↗</span></button></article>
+        <article class="card"><div class="iconbox">⌁</div><h3>Data Science & Applied AI</h3><p>Discover data analysis, model experiments, visualization, and machine learning concepts.</p><div class="tags"><span>Data</span><span>ML</span><span>Projects</span></div><button class="card-link js-chat">Ask about this track <span>↗</span></button></article>
+      </div>
+    </div>
+  </section>
+  <section id="approach" class="how"><div class="container"><div class="kicker">OUR HANDS-ON APPROACH</div><h2>Less watching.<br>More building.</h2><div class="step-grid"><div class="step"><span class="step-num">01</span><h3>Start with a question</h3><p>Pick a small problem, such as replying to a course enquiry.</p></div><div class="step"><span class="step-num">02</span><h3>Make a working prototype</h3><p>Use prompts and low-code tools to build a useful first version.</p></div><div class="step"><span class="step-num">03</span><h3>Test with scenarios</h3><p>Check missing information, verify responses, and refine the experience.</p></div></div></div></section>
+  <div class="container"><section class="banner"><div><div class="kicker" style="color:#80f4f8">TRY THE AI LAB</div><h2>Meet your first<br>Academy chatbot.</h2><p>Open the interactive demo to explore sample course enquiries, text summaries, and action lists.</p><span class="small">Demo responses are scripted, not AI-generated. Connect n8n later for real AI.</span></div><button class="btn btn-cyan js-chat">Open sample chatbot ↗</button></section></div>
+  <section class="faq container" id="faq"><div class="faq-grid"><div><div class="kicker">COMMON QUESTIONS</div><h2>Good to know.</h2><p>This is a classroom website prototype, not an official registration or course-policy portal.</p></div><div><details><summary>Does this chatbot use real AI?</summary><p>Not yet. Until an n8n production Chat URL is configured, it displays clearly labeled scripted demo responses.</p></details><details><summary>Can I ask about official course fees?</summary><p>This sample site has no verified fee database. It will not invent official fees or schedules.</p></details><details><summary>How do we connect it to n8n?</summary><p>Set the N8N_CHAT_URL variable in index.html to the public production Chat Trigger URL, then deploy the website and configure the exact website origin in n8n.</p></details><details><summary>Does this demo save enquiries?</summary><p>No. The simulated chat runs entirely in the visitor's browser and does not save or send student personal information.</p></details></div></div></section>
+  <footer class="footer"><div class="container footer-inner"><strong>✦ GENQUANTAA ACADEMY</strong><span>Sample website • Day 6 chatbot workshop</span><span>Learn • Build • Improve</span></div></footer>
+  <button id="chat-fab" class="chat-fab" type="button" aria-expanded="false" aria-controls="chat-panel"><span>✦</span> Ask our AI</button>
+  <div id="chat-panel" class="chat-panel" role="dialog" aria-label="Academy demo chatbot" hidden>
+    <div class="chat-top"><div><strong>✦ Academy AI Assistant</strong><small>Sample chatbot • Demo mode</small></div><button class="chat-close" id="chat-close" aria-label="Close chatbot">×</button></div>
+    <div id="chat-msgs" class="chat-msgs" aria-live="polite"></div>
+    <div class="suggestions"><button data-example="I want to learn Agentic AI">Agentic AI</button><button data-example="SUMMARY: Today we built a simple website and tested its chat interface.">Summarize text</button><button data-example="ACTIONS: Priya will test the chatbot on Friday.">Action list</button></div>
+    <form class="chat-form" id="chat-form"><label class="sr-only" for="chat-input">Your message</label><input id="chat-input" placeholder="Type a message..." maxlength="700" autocomplete="off" required><button type="submit" aria-label="Send">➤</button></form>
+    <div class="disclaimer">Demo only. No messages are stored or sent.</div>
+  </div>
+  <script>
+    // When you have a LIVE n8n Chat Trigger production URL, paste it below.
+    // Example format: https://YOUR-N8N-DOMAIN/webhook/XXXXXXXX/chat
+    // Never paste Gemini API credentials into frontend code.
+    const N8N_CHAT_URL = "";
+
+    (function(){
+      const panel=document.getElementById("chat-panel");
+      const fab=document.getElementById("chat-fab");
+      const input=document.getElementById("chat-input");
+      const messages=document.getElementById("chat-msgs");
+      const open=()=>{panel.hidden=false;fab.setAttribute("aria-expanded","true");input.focus();};
+      const close=()=>{panel.hidden=true;fab.setAttribute("aria-expanded","false");};
+      const add=(message,type)=>{const el=document.createElement("div");el.className="bubble "+type;el.textContent=message;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;};
+      const reply=(message)=>{
+        const m=message.trim();
+        if(/^summary\s*:/i.test(m)){const value=m.replace(/^summary\s*:/i,"").trim();return value?"Demo summary from your text: "+value:"Add text after SUMMARY: to test this demo.";}
+        if(/^actions\s*:/i.test(m)){const value=m.replace(/^actions\s*:/i,"").trim();return value?"Demo action extracted: "+value:"Add a task after ACTIONS: to test this demo.";}
+        if(/fee|price|duration|certificate|admission date|schedule/i.test(m))return "I cannot verify official prices, schedules, or course policies from this demo. Please contact the Academy team.";
+        if(/agentic|automation|n8n/i.test(m))return "Agentic AI and No-Code Automation is one of the sample learning tracks shown here. What would you like to explore about it?";
+        if(/azure|databricks|data engineering/i.test(m))return "The sample Azure Data Engineering track highlights pipelines, SQL, and Databricks. Official details need confirmation.";
+        if(/data science|machine learning/i.test(m))return "The sample Data Science track covers analysis, applied machine learning, and projects. Official details need confirmation.";
+        return "Hi! This is a scripted classroom demo. Try asking about Agentic AI, or start a message with SUMMARY: or ACTIONS:.";
+      };
+      fab.addEventListener("click",()=>panel.hidden?open():close());
+      document.getElementById("chat-close").addEventListener("click",close);
+      document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden)close();});
+      document.querySelectorAll(".js-chat").forEach(b=>b.addEventListener("click",open));
+      document.getElementById("chat-form").addEventListener("submit",e=>{e.preventDefault();let msg=input.value.trim();if(!msg)return;add(msg,"user");input.value="";setTimeout(()=>add(reply(msg),"bot"),220);});
+      document.querySelectorAll("[data-example]").forEach(b=>b.addEventListener("click",()=>{const msg=b.dataset.example;open();add(msg,"user");setTimeout(()=>add(reply(msg),"bot"),220);}));
+      add("Welcome to the GENQUANTAA Academy website demo! What would you like to explore?","bot");
+      if(/^https:\/\/.+\/chat(?:\?.*)?$/i.test(N8N_CHAT_URL)){
+        const link=document.createElement("link");link.rel="stylesheet";link.href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css";document.head.appendChild(link);
+        import("https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js").then(mod=>{
+          mod.createChat({webhookUrl:N8N_CHAT_URL,mode:"window",initialMessages:["Welcome to GENQUANTAA Academy! How can I help you?"]});
+          fab.hidden=true;panel.hidden=true;
+          document.querySelectorAll(".js-chat").forEach(b=>b.addEventListener("click",()=>document.querySelector(".chat-window-toggle")?.click()));
+        }).catch(()=>console.warn("Could not load n8n widget. Using demo mode."));
+      }
+    })();
+  </script>
+</body>
+</html>
