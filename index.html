@@ -73,57 +73,64 @@
     </div>
   </section>
   <section id="approach" class="how"><div class="container"><div class="kicker">OUR HANDS-ON APPROACH</div><h2>Less watching.<br>More building.</h2><div class="step-grid"><div class="step"><span class="step-num">01</span><h3>Start with a question</h3><p>Pick a small problem, such as replying to a course enquiry.</p></div><div class="step"><span class="step-num">02</span><h3>Make a working prototype</h3><p>Use prompts and low-code tools to build a useful first version.</p></div><div class="step"><span class="step-num">03</span><h3>Test with scenarios</h3><p>Check missing information, verify responses, and refine the experience.</p></div></div></div></section>
-  <div class="container"><section class="banner"><div><div class="kicker" style="color:#80f4f8">TRY THE AI LAB</div><h2>Meet your first<br>Academy chatbot.</h2><p>Open the interactive demo to explore sample course enquiries, text summaries, and action lists.</p><span class="small">Demo responses are scripted, not AI-generated. Connect n8n later for real AI.</span></div><button class="btn btn-cyan js-chat">Open sample chatbot ↗</button></section></div>
-  <section class="faq container" id="faq"><div class="faq-grid"><div><div class="kicker">COMMON QUESTIONS</div><h2>Good to know.</h2><p>This is a classroom website prototype, not an official registration or course-policy portal.</p></div><div><details><summary>Does this chatbot use real AI?</summary><p>Not yet. Until an n8n production Chat URL is configured, it displays clearly labeled scripted demo responses.</p></details><details><summary>Can I ask about official course fees?</summary><p>This sample site has no verified fee database. It will not invent official fees or schedules.</p></details><details><summary>How do we connect it to n8n?</summary><p>Set the N8N_CHAT_URL variable in index.html to the public production Chat Trigger URL, then deploy the website and configure the exact website origin in n8n.</p></details><details><summary>Does this demo save enquiries?</summary><p>No. The simulated chat runs entirely in the visitor's browser and does not save or send student personal information.</p></details></div></div></section>
+  <div class="container"><section class="banner"><div><div class="kicker" style="color:#80f4f8">TRY THE AI LAB</div><h2>Meet your first<br>Academy chatbot.</h2><p>Open the AI assistant to ask about sample course enquiries, text summaries, and action lists.</p><span class="small">The chat widget connects to our n8n AI workflow once its production URL is configured.</span></div><button class="btn btn-cyan js-chat">Open AI chatbot ↗</button></section></div>
+  <section class="faq container" id="faq"><div class="faq-grid"><div><div class="kicker">COMMON QUESTIONS</div><h2>Good to know.</h2><p>This is a classroom website prototype, not an official registration or course-policy portal.</p></div><div><details><summary>Does this chatbot use real AI?</summary><p>Once connected to the production n8n Chat Trigger, visitor messages are processed by our configured AI Agent. Until then, the chat is unavailable.</p></details><details><summary>Can I ask about official course fees?</summary><p>This sample site has no verified fee database. It will not invent official fees or schedules.</p></details><details><summary>How do we connect it to n8n?</summary><p>Set N8N_CHAT_URL in chat-config.js to the public production Chat Trigger URL, then deploy the website and configure the exact website origin in n8n.</p></details><details><summary>Does this chatbot save enquiries?</summary><p>Messages will be processed by our n8n workflow after integration. We have not configured automatic lead storage in this sample.</p></details></div></div></section>
   <footer class="footer"><div class="container footer-inner"><strong>✦ GENQUANTAA ACADEMY</strong><span>Sample website • Day 6 chatbot workshop</span><span>Learn • Build • Improve</span></div></footer>
-  <button id="chat-fab" class="chat-fab" type="button" aria-expanded="false" aria-controls="chat-panel"><span>✦</span> Ask our AI</button>
-  <div id="chat-panel" class="chat-panel" role="dialog" aria-label="Academy demo chatbot" hidden>
-    <div class="chat-top"><div><strong>✦ Academy AI Assistant</strong><small>Sample chatbot • Demo mode</small></div><button class="chat-close" id="chat-close" aria-label="Close chatbot">×</button></div>
-    <div id="chat-msgs" class="chat-msgs" aria-live="polite"></div>
-    <div class="suggestions"><button data-example="I want to learn Agentic AI">Agentic AI</button><button data-example="SUMMARY: Today we built a simple website and tested its chat interface.">Summarize text</button><button data-example="ACTIONS: Priya will test the chatbot on Friday.">Action list</button></div>
-    <form class="chat-form" id="chat-form"><label class="sr-only" for="chat-input">Your message</label><input id="chat-input" placeholder="Type a message..." maxlength="700" autocomplete="off" required><button type="submit" aria-label="Send">➤</button></form>
-    <div class="disclaimer">Demo only. No messages are stored or sent.</div>
-  </div>
-  <script>
-    // When you have a LIVE n8n Chat Trigger production URL, paste it below.
-    // Example format: https://YOUR-N8N-DOMAIN/webhook/XXXXXXXX/chat
-    // Never paste Gemini API credentials into frontend code.
-    const N8N_CHAT_URL = "";
 
-    (function(){
-      const panel=document.getElementById("chat-panel");
-      const fab=document.getElementById("chat-fab");
-      const input=document.getElementById("chat-input");
-      const messages=document.getElementById("chat-msgs");
-      const open=()=>{panel.hidden=false;fab.setAttribute("aria-expanded","true");input.focus();};
-      const close=()=>{panel.hidden=true;fab.setAttribute("aria-expanded","false");};
-      const add=(message,type)=>{const el=document.createElement("div");el.className="bubble "+type;el.textContent=message;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;};
-      const reply=(message)=>{
-        const m=message.trim();
-        if(/^summary\s*:/i.test(m)){const value=m.replace(/^summary\s*:/i,"").trim();return value?"Demo summary from your text: "+value:"Add text after SUMMARY: to test this demo.";}
-        if(/^actions\s*:/i.test(m)){const value=m.replace(/^actions\s*:/i,"").trim();return value?"Demo action extracted: "+value:"Add a task after ACTIONS: to test this demo.";}
-        if(/fee|price|duration|certificate|admission date|schedule/i.test(m))return "I cannot verify official prices, schedules, or course policies from this demo. Please contact the Academy team.";
-        if(/agentic|automation|n8n/i.test(m))return "Agentic AI and No-Code Automation is one of the sample learning tracks shown here. What would you like to explore about it?";
-        if(/azure|databricks|data engineering/i.test(m))return "The sample Azure Data Engineering track highlights pipelines, SQL, and Databricks. Official details need confirmation.";
-        if(/data science|machine learning/i.test(m))return "The sample Data Science track covers analysis, applied machine learning, and projects. Official details need confirmation.";
-        return "Hi! This is a scripted classroom demo. Try asking about Agentic AI, or start a message with SUMMARY: or ACTIONS:.";
-      };
-      fab.addEventListener("click",()=>panel.hidden?open():close());
-      document.getElementById("chat-close").addEventListener("click",close);
-      document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden)close();});
-      document.querySelectorAll(".js-chat").forEach(b=>b.addEventListener("click",open));
-      document.getElementById("chat-form").addEventListener("submit",e=>{e.preventDefault();let msg=input.value.trim();if(!msg)return;add(msg,"user");input.value="";setTimeout(()=>add(reply(msg),"bot"),220);});
-      document.querySelectorAll("[data-example]").forEach(b=>b.addEventListener("click",()=>{const msg=b.dataset.example;open();add(msg,"user");setTimeout(()=>add(reply(msg),"bot"),220);}));
-      add("Welcome to the GENQUANTAA Academy website demo! What would you like to explore?","bot");
-      if(/^https:\/\/.+\/chat(?:\?.*)?$/i.test(N8N_CHAT_URL)){
-        const link=document.createElement("link");link.rel="stylesheet";link.href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css";document.head.appendChild(link);
-        import("https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js").then(mod=>{
-          mod.createChat({webhookUrl:N8N_CHAT_URL,mode:"window",initialMessages:["Welcome to GENQUANTAA Academy! How can I help you?"]});
-          fab.hidden=true;panel.hidden=true;
-          document.querySelectorAll(".js-chat").forEach(b=>b.addEventListener("click",()=>document.querySelector(".chat-window-toggle")?.click()));
-        }).catch(()=>console.warn("Could not load n8n widget. Using demo mode."));
+  <!-- Real n8n chat widget mounts here; no scripted chatbot replies are used. -->
+  <div id="n8n-chat"></div>
+  <script type="module">
+    import { N8N_CHAT_URL } from './chat-config.js';
+
+    const chatButtons = document.querySelectorAll('.js-chat');
+    const chatUrl = (N8N_CHAT_URL || '').trim();
+    const notice = (message) => window.alert(message);
+
+    if (chatUrl.startsWith('https://') && chatUrl.includes('/webhook/')) {
+      const style = document.createElement('link');
+      style.rel = 'stylesheet';
+      style.href = 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css';
+      document.head.appendChild(style);
+
+      try {
+        const { createChat } = await import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js');
+        createChat({
+          webhookUrl: chatUrl,
+          target: '#n8n-chat',
+          mode: 'window',
+          loadPreviousSession: false,
+          showWelcomeScreen: false,
+          initialMessages: [
+            'Welcome to GENQUANTAA Academy!',
+            'How can I help you today?'
+          ],
+          i18n: {
+            en: {
+              title: 'GENQUANTAA Academy AI Assistant',
+              subtitle: 'Ask about courses or get AI assistance',
+              footer: '',
+              getStarted: 'Start a chat',
+              inputPlaceholder: 'Type your question...'
+            }
+          }
+        });
+
+        chatButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const toggle = document.querySelector('#n8n-chat .chat-window-toggle');
+            if (toggle) toggle.click();
+            else notice('The AI chatbot is loading. Please try again in a moment.');
+          });
+        });
+      } catch (error) {
+        console.error('Unable to initialize n8n chat:', error);
+        chatButtons.forEach(button => button.addEventListener('click',
+          () => notice('The AI assistant is currently unavailable. Please try again later.')));
       }
-    })();
+    } else {
+      chatButtons.forEach(button => button.addEventListener('click',
+        () => notice('The live AI chatbot is being connected. Please check back soon.')));
+    }
   </script>
 </body>
 </html>
